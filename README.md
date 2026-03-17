@@ -30,19 +30,18 @@ This agent uses:
 git clone https://github.com/gokborayilmaz/executive-daily-briefing-agent.git
 cd ------
 ```
-### Create virtual environment
+### Create Virtual Environment
 ```bash
 uv venv
 .venv\Scripts\activate        # Windows
 source .venv/bin/activate   # macOS/Linux
 ```
-### Install dependencies
+### Install Dependencies
 ```bash
 uv pip install -r requirements.txt
 ```
-### Configure environment
+### Configure Environment
 ```bash
-# Configure environment
 cp .env.example .env
 # Edit .env and add your OPENAI_API_KEY and Google API Keys
 ```
