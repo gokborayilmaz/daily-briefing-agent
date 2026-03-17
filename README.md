@@ -25,28 +25,30 @@ This agent uses:
 
 ## Installation
 
+### Clone Repostrory
 ```bash
-# Clone Repostrory
 git clone https://github.com/gokborayilmaz/executive-daily-briefing-agent.git
 cd ------
 ```
+### Create virtual environment
 ```bash
-# Create virtual environment
 uv venv
 .venv\Scripts\activate        # Windows
 # source .venv/bin/activate   # macOS/Linux
 ```
+### Install dependencies
 ```bash
-# Install dependencies
 uv pip install -r requirements.txt
 ```
+### Configure environment
 ```bash
 # Configure environment
 cp .env.example .env
 # Edit .env and add your OPENAI_API_KEY and Google API Keys
 ```
 
-## Usage
+## Usage 
+You can chat with this agent via the CLI or through the Streamlit UI. Whichever one you want to use, run it.
 
 ### CLI Mode
 
