@@ -20,7 +20,7 @@ from tools.calendar_tool import fetch_todays_calendar
 class ExecutiveBriefingAgent:
     def __init__(self, model: str = BRIEFING_MODEL):
         
-        # 1. Storage ve Memory oluşturma
+        # 1. Creating Storage and Memory
         self.storage = SqliteStorage(db_file=DB_PATH)
         self.memory = Memory(
             storage=self.storage,
@@ -32,12 +32,12 @@ class ExecutiveBriefingAgent:
             model=model
         )
 
-        # 2. Reflection Ayarları
+        # 2. Reflection Settings
         ref_config = None
         if ReflectionConfig:
             ref_config = ReflectionConfig(max_iterations=2, acceptance_threshold=0.8)
 
-        # 3. Ajan Tanımı
+        # 3. Agent Creating
         self.agent = Agent(
             name="Executive Briefing Assistant",
             role="Personal executive assistant",
@@ -51,11 +51,10 @@ class ExecutiveBriefingAgent:
         )
 
     def generate_briefing(self) -> MorningBriefing:
-        """E-postaları ve takvimi tarayarak yapılandırılmış özet döner."""
         briefing_task = Task(
             f"Generate today's morning briefing for {USER_NAME}.",
             # Use this tools line for MCP connection
-          # tools= [GoogleWorkspaceMCP]
+          #  tools= [GoogleWorkspaceMCP]
             # Use this tools line for Quick try
             tools=[fetch_unread_emails, fetch_todays_calendar], 
             response_format=MorningBriefing
@@ -63,13 +62,9 @@ class ExecutiveBriefingAgent:
         self.agent.do(briefing_task)
         return briefing_task.response
 
-    # DÜZELTME: Bu metod artık sınıfın (class) içinde!
     def chat(self, message: str) -> str:
-        """Geçmişi hatırlayan ve araçları kullanabilen sohbet metodu."""
-        # Takvim araçlarını buraya da ekledik ki '12'den sonra ne var' sorusuna bakabilsin
         chat_task = Task(
             message,
-            tools=[fetch_unread_emails, fetch_todays_calendar]
         )
         self.agent.do(chat_task)
         return chat_task.response
