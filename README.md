@@ -1,4 +1,4 @@
-# ☀️ Daily Executive Briefing Agent
+# ☀️ Daily Executive Briefing Agent (Every day New AI Agent Twitter Series Day -1- agent) 
 
 An AI-powered executive assistant that pulls your daily schedule and unread emails to deliver a concise, prioritized morning briefing — and remembers follow-ups across sessions.
 
